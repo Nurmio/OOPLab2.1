@@ -1,11 +1,15 @@
+import java.awt.*;
 import java.util.ArrayList;
 public class Cartransport extends Truck {
     //private ArrayList<Vehicle> LoadList = new ArrayList<>();
-    private final Loader loader;
+    private Loader loader;
 
     public Cartransport() {
-
         this.loader = new Loader();
+        setNrDoors(2);
+        setColor(Color.red);
+        setEnginePower(500);
+        setModelName("CarTransport");
     }
 
     private boolean RampIsUp = true;
@@ -28,6 +32,7 @@ public class Cartransport extends Truck {
 
     public void LoadVehicle(Vehicle vehicle) {
         if (!(vehicle instanceof Cartransport)) {
+
             if (!RampIsUp && getDeltaPos(vehicle) <= 3) {
                 loader.LoadVehicle(vehicle);
                 vehicle.setPos(getPos()[0], getPos()[1]);
@@ -47,8 +52,24 @@ public class Cartransport extends Truck {
 
     private void updateLoadCarPos() {
         for (Vehicle v : loader.GetLoadList()) {
-            v.move();
+            switch(getDirection()){
+                case NORTH:
+                    v.setPos(v.getPos()[0],v.getPos()[1]+=getCurrentSpeed());
+                    break;
+                case EAST:
+                    v.setPos(v.getPos()[0]+=getCurrentSpeed(),v.getPos()[1]);
+                    break;
+                case SOUTH:
+                    v.setPos(v.getPos()[0],v.getPos()[1]-=getCurrentSpeed());
+                    break;
+                case WEST:
+                    v.setPos(v.getPos()[0]+=getCurrentSpeed(),v.getPos()[1]);
+                    break;
+            }
         }
+    }
+    public int getLoadlistSize(){
+        return loader.GetLoadList().size();
     }
 
     @Override
@@ -71,9 +92,7 @@ public class Cartransport extends Truck {
 
     @Override
     public void move() {
-
         updateLoadCarPos();
         super.move();
-
     }
 }

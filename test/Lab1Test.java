@@ -169,24 +169,20 @@ public class Lab1Test {
     }
     @Test
     public void TestTransportMove() {
-        double[] oldPos = setTransport.getPos();
+        double[] oldPos = {setTransport.getPos()[0],setTransport.getPos()[1]};
         setTransport.LowerRamp();
         setTransport.LoadVehicle(setSaab);
         setTransport.LoadVehicle(setVolvo);
         setTransport.RaiseRamp();
+        setTransport.startEngine();
         setTransport.move();
-        System.out.println(
-                oldPos[0] + " y: " + oldPos[1]
-        );
-        assertTrue(oldPos[0] != setTransport.getPos()[0]
-                && oldPos[1] != setTransport.getPos()[1]
+        setTransport.move();
+        assertTrue(oldPos[1] != setTransport.getPos()[1]
                 && setTransport.getPos()[0] == setSaab.getPos()[0]
                 && setTransport.getPos()[0] == setVolvo.getPos()[0]
                 && setTransport.getPos()[1] == setSaab.getPos()[1]
                 && setTransport.getPos()[1] == setVolvo.getPos()[1]);
     }
-
-
     @Test
     public void TestUnloadVehicleTransport() {
         setTransport.LowerRamp();
