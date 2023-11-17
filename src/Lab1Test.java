@@ -10,6 +10,7 @@ public class Lab1Test {
     private Scania setScania;
 
     private Cartransport setTransport;
+    private Workshop<Vehicle> setWorkshop = new Workshop<>(5);
 
     private Loader setLoader;
     @Before
@@ -190,5 +191,10 @@ public class Lab1Test {
         setTransport.UnloadVehicle();
         assertEquals(setSaab.getDirection(), setTransport.getOppsiteDirection());
         assertNotEquals(setSaab.getPos(), setTransport.getPos());
+    }
+    @Test
+    public void TestWorkshopLoading(){
+        setWorkshop.AddVehicle(setSaab);
+        assertTrue(setWorkshop.getLoadList().size() == 1);
     }
 }

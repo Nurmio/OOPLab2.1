@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Workshop<T extends Vehicle> {
     private final Loader loader;
     private final double vehicleLimit;
@@ -6,12 +8,16 @@ public class Workshop<T extends Vehicle> {
         this.vehicleLimit = vehicleLimit;
         this.loader = new Loader();
     }
+    public ArrayList<Vehicle> getLoadList(){
+        return loader.GetLoadList();
+    }
 
 
 
     public void AddVehicle(T vehicle) {
         loader.LoadVehicle(vehicle);
     }
+
 
 
 }
