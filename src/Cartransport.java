@@ -12,6 +12,7 @@ public class Cartransport extends Truck {
         setModelName("CarTransport");
     }
 
+
     private boolean RampIsUp = true;
 
     public void LowerRamp() {
