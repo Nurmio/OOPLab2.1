@@ -13,7 +13,7 @@ public class Loader {
 
     }
     public void UnloadVehicle(){
-        LoadList.remove(LoadList.getLast());
+        LoadList.remove(GetLastElement());
 
 
 
@@ -23,4 +23,6 @@ public class Loader {
         return LoadList;
 
     }
+
+    public Vehicle GetLastElement(){ return LoadList.get(LoadList.size()-1);}
 }

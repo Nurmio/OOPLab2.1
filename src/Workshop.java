@@ -8,8 +8,7 @@ public class Workshop<T extends Vehicle> {
         this.vehicleLimit = vehicleLimit;
         this.loader = new Loader();
     }
-    public ArrayList<Vehicle> getLoadList(){
-        return loader.GetLoadList();
+    public ArrayList<Vehicle> getLoadList(){return loader.GetLoadList();
     }
 
 
@@ -17,6 +16,8 @@ public class Workshop<T extends Vehicle> {
     public void AddVehicle(T vehicle) {
         loader.LoadVehicle(vehicle);
     }
+
+    public void RemoveVehicle() {loader.UnloadVehicle();}
 
 
 

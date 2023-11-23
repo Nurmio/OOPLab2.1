@@ -21,8 +21,18 @@ public class Lab1Test {
         setScania = new Scania();
         setLoader = new Loader();
         setTransport = new Cartransport();
+        setWorkshop = new Workshop<>(5);
     }
 
+    @Test
+    public void TestUnloadWorkshop()
+    {
+        setWorkshop.AddVehicle(setSaab);
+        setWorkshop.AddVehicle(setScania);
+        setWorkshop.RemoveVehicle();
+        setWorkshop.RemoveVehicle();
+        assertTrue(setWorkshop.getLoadList().size() == 0);
+    }
     @Test
     public void TestTurnTurboON() {
         setSaab.setTurboOn();
