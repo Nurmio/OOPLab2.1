@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
-public class Cartransport extends Truck {
-    //private ArrayList<Vehicle> LoadList = new ArrayList<>();
+public class Cartransport extends Vehicle {
     private Loader loader;
 
     public Cartransport() {
